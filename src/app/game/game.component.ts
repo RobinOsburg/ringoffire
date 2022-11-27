@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -12,15 +15,33 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   game: Game;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore ,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
+    this.route.params.subscribe((params)=> {
+      console.log(params);
+    });
+    this
+    .firestore
+    .collection('games')
+    .doc(params.id)
+    .valueChanges()
+    .subscribe((game:any) =>{
+      console.log('Game update',game);
+      this.game.currentPlayer = game.currentPlayer;
+      this.game.playedCards = game.playedCards;
+      this.game.players = game.players;
+      this.game.stack = game.stack;
+    });
   }
 
-  newGame() {
+  async newGame() {
     this.game = new Game();
-    console.log(this.game)
+   const coll = collection(this.firestore,'games');
+   console.log("Document written with ID: ", coll);
+   let gameInfo=await addDoc(coll,{game:this.game.toJson() });
+   console.log(gameInfo);
   }
 
   takeCard() {
