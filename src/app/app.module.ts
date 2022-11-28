@@ -44,7 +44,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     MatCardModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
+    // provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
