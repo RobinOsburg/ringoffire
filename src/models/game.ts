@@ -26,7 +26,7 @@ export class Game {
             players:this.players,
             stack:this.stack,
             playedCards:this.playedCards,
-            currentPlayer:this.playedCards,
+            currentPlayer:this.currentPlayer,
             pickCardAnimation: this.pickCardAnimation,
             currentCard: this.currentCard
         };

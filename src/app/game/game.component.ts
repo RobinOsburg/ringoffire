@@ -50,6 +50,7 @@ export class GameComponent implements OnInit {
       this.game.pickCardAnimation = true;
       console.log('New card:' + this.game.currentCard);
       console.log('Game is:', this.game);
+     
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
 
