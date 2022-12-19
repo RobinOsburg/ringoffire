@@ -8,24 +8,19 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 export class GameInfoComponent implements OnInit, OnChanges {
 
   cardAction = [
-    { title: 'Thruster', description: 'Everyone has to do 3 Thrusters' },
-    { title: 'PullUps', description: 'You have to do 5 Strickt PullUps' },
-    { title: 'SkiErg', description: 'Everyone has to do 10 cal on SkiErg' },
-    { title: 'DeadLift', description: 'Person left from you has to do 10 DeadLifts' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-    { title: 'Squats', description: 'Everyone has to do 10 FrontSquats' },
-
+    { title: 'Pull ups', description: '1' },
+    { title: 'Strict Press', description: '2' },
+    { title: 'Burning Roof', description: '3' },
+    { title: 'Burpees', description: '4' },
+    { title: 'Alternating lunge jumps', description: '5' },
+    { title: 'Squat jumps', description: '6' },
+    { title: 'Push ups', description: '7' },
+    { title: 'Thrusters', description: '8' },
+    { title: 'Lunges', description: '9' },
+    { title: 'High knees', description: '10' },
+    { title: 'Jumping Jacks', description: '11' },
+    { title: 'Squats', description: '12' },
+    { title: 'Sit ups', description: '13' },
   ]
 
   title = '';
