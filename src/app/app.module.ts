@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { GameOverComponent } from './game-over/game-over.component';
 
 
 
@@ -30,7 +31,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    GameInfoComponent
+    GameInfoComponent,
+    GameOverComponent
   ],
   imports: [
     BrowserModule,

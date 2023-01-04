@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { GameOverComponent } from '../game-over/game-over.component';
 // import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-game',
@@ -45,24 +46,38 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.game.pickCardAnimation) {
-      this.game.currentCard = this.game.stack.pop();
-      this.game.pickCardAnimation = true;
-      console.log('New card:' + this.game.currentCard);
-      console.log('Game is:', this.game);
-     
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+    if (this.game.currentPlayer < 2) {
+      this.dialog.open(DialogAddPlayerComponent)
+    }
+    else {
 
-      this.saveGame();
-      
-      setTimeout(() => {
-        this.game.playedCards.push(this.game.currentCard);
-        this.game.pickCardAnimation = false;
-        this.saveGame();
-      }, 1000);
+      if (this.game.playedCards.length <= 51) {
+
+
+        if (!this.game.pickCardAnimation) {
+          this.game.currentCard = this.game.stack.pop();
+          this.game.pickCardAnimation = true;
+          // console.log('New card:' + this.game.currentCard);
+          // console.log('Game is:', this.game);
+
+          this.game.currentPlayer++;
+          this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+
+          this.saveGame();
+
+          setTimeout(() => {
+            this.game.playedCards.push(this.game.currentCard);
+            this.game.pickCardAnimation = false;
+            this.saveGame();
+          }, 1000);
+        }
+      }
+      else {
+        this.dialog.open(GameOverComponent)
+      }
     }
   }
+
 
 
   openDialog(): void {
@@ -86,12 +101,5 @@ export class GameComponent implements OnInit {
       .update(this.game.toJson());
 
   }
-
-
 }
-
-
-
-
-
 
