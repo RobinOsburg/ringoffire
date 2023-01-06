@@ -1,0 +1,44 @@
+
+
+
+
+
+.infoPopUp {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    span {
+        font-size: large;
+    }
+}
+
+
+.stage {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    justify-content: end;
+}
+
+
+.image {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    height: 20px;
+    margin: 0 auto 0 auto;
+    transform-origin: bottom;
+    width: 20px;
+}
+.img-bounce-2 {
+    animation-name: img-bounce-2;
+    animation-timing-function: ease;
+}
+@keyframes img-bounce-2 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-25px); }
+    100% { transform: translateY(0); }
+}
+
+
+
+

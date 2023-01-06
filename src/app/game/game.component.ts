@@ -5,6 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { GameOverComponent } from '../game-over/game-over.component';
+import { InfoAddNewPlayerComponent } from '../info-add-new-player/info-add-new-player.component';
 // import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-game',
@@ -46,13 +47,12 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (this.game.currentPlayer < 2) {
-      this.dialog.open(DialogAddPlayerComponent)
+    if (this.game.players.length < 2) {
+      this.dialog.open(InfoAddNewPlayerComponent, { position: { right: '0', bottom: '150px'} })
     }
     else {
 
       if (this.game.playedCards.length <= 51) {
-
 
         if (!this.game.pickCardAnimation) {
           this.game.currentCard = this.game.stack.pop();
@@ -79,7 +79,6 @@ export class GameComponent implements OnInit {
   }
 
 
-
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
@@ -99,7 +98,6 @@ export class GameComponent implements OnInit {
       .collection('games')
       .doc(this.gameId)
       .update(this.game.toJson());
-
   }
 }
 
