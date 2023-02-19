@@ -48,7 +48,7 @@ export class GameComponent implements OnInit {
 
   takeCard() {
     if (this.game.players.length < 2) {
-      this.dialog.open(InfoAddNewPlayerComponent, { position: { right: '0', bottom: '150px'} })
+      this.dialog.open(InfoAddNewPlayerComponent, { position: { right: '10px', bottom: '150px'},width:'20%' })
     }
     else {
 
@@ -57,8 +57,7 @@ export class GameComponent implements OnInit {
         if (!this.game.pickCardAnimation) {
           this.game.currentCard = this.game.stack.pop();
           this.game.pickCardAnimation = true;
-          // console.log('New card:' + this.game.currentCard);
-          // console.log('Game is:', this.game);
+         
 
           this.game.currentPlayer++;
           this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;

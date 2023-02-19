@@ -1,0 +1,17 @@
+.matCardTitel {
+    @media (max-width: 830px) {
+        
+            font-size: medium;
+        
+    }
+}
+
+.matCardContent{
+    font-size: large;
+    
+    @media (max-width: 830px) {
+        
+        font-size: medium;
+    
+}
+}
